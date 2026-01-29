@@ -1,0 +1,23 @@
+{
+  "home": {
+    "title": "Nikki",
+    "subtitle": "Aoba Inter Bold",
+    "theme_label": "Theme: {{theme}}",
+    "default_font": "Inter Regular (Default)",
+    "go_to_login": "Go to Login",
+    "container_text": "This container uses the 'secondary' theme color.",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "login": {
+    "welcome": "Welcome back",
+    "sign_in": "Sign In",
+    "continue_with_google": "Continue with Google",
+    "continue_with_facebook": "Continue with Facebook",
+    "continue_with_discord": "Continue with Discord",
+    "slogan": "Say goodbye to mental clutter. Start thinking clearly."
+  }
+}
