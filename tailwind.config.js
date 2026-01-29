@@ -7,6 +7,8 @@ module.exports = {
       fontFamily: {
         sans: ["Inter_400Regular"],
         inter: ["Inter_400Regular"],
+        serif: ["Merriweather_400Regular"],
+        merriweather: ["Merriweather_400Regular"],
       },
     },
   },
@@ -18,6 +20,9 @@ module.exports = {
         ".font-semibold": { fontFamily: "Inter_600SemiBold" },
         ".font-bold": { fontFamily: "Inter_700Bold" },
         ".font-black": { fontFamily: "Inter_900Black" },
+        ".font-serif": { fontFamily: "Merriweather_400Regular" },
+        ".font-serif-bold": { fontFamily: "Merriweather_700Bold" },
+        ".font-serif-black": { fontFamily: "Merriweather_900Black" },
       });
     },
   ],
