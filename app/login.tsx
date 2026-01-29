@@ -4,13 +4,15 @@ import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import * as WebBrowser from "expo-web-browser";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
-  const { isDark } = useTheme()
+  const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const { startOAuthFlow: startGoogleFlow } = useOAuth({ strategy: "oauth_google" });
   const { startOAuthFlow: startFacebookFlow } = useOAuth({ strategy: "oauth_facebook" });
@@ -53,7 +55,7 @@ export default function LoginScreen() {
     <SafeAreaView className="flex-1 bg-black">
       <StatusBar barStyle={'light-content'} />
       <View className="flex-1 p-6">
-        <View className="items-center mt-12">
+        <View className="items-center mt-4">
           <Text className="text-white text-3xl font-bold tracking-[-.2px]">LOGO</Text>
         </View>
 
@@ -71,15 +73,15 @@ export default function LoginScreen() {
 
         <View className="mt-auto mb-10">
           <View className="gap-3">
-            <SocialLoginButton icon="google" text="Continuar com Google" onPress={onGooglePress} />
-            <SocialLoginButton icon="facebook" text="Continuar com Facebook" onPress={onFacebookPress} />
-            <SocialLoginButton text="Continuar com Discord" onPress={onDiscordPress} customIcon={<MaterialIcons name="discord" size={24} color="black" />} />
+            <SocialLoginButton icon="google" text={t("login.continue_with_google")} onPress={onGooglePress} />
+            <SocialLoginButton icon="facebook" text={t("login.continue_with_facebook")} onPress={onFacebookPress} />
+            <SocialLoginButton text={t("login.continue_with_discord")} onPress={onDiscordPress} customIcon={<MaterialIcons name="discord" size={24} color="black" />} />
           </View>
 
           <View className="h-[0.5px] bg-zinc-600 my-8" />
 
           <Text className="font-serif text-zinc-200 text-md text-center leading-relaxed px-8">
-            Diga adeus à bagunça mental. Comece a pensar com clareza.
+            {t("login.slogan")}
           </Text>
         </View>
       </View>
@@ -95,7 +97,7 @@ const SocialLoginButton = ({ icon, customIcon, text, onPress }: { icon?: any, cu
       onPress={onPress}
     >
       {customIcon ? customIcon : <FontAwesome name={icon} size={20} color="black" />}
-      <Text className="text-black text-lg font-bold ml-3 tracking-[-0.2px]">{text}</Text>
+      <Text className="text-black text-lg font-semibold ml-3 tracking-[-0.2px]">{text}</Text>
     </TouchableOpacity>
   );
 }

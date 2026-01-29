@@ -19,7 +19,10 @@ import * as SecureStore from "expo-secure-store";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
+import "../i18n";
+import { ThemeProvider } from "../theme/ThemeContext";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -49,11 +52,9 @@ const tokenCache = {
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
 if (!publishableKey) {
-  // We'll let it slide for now as per user request, but it might throw an error if not provided.
-  // I'll add a warning instead of a hard crash if possible, but ClerkProvider requires it.
+  // idk what to do here
 }
 
-import { ThemeProvider } from "../theme/ThemeContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -81,12 +82,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
-      <ClerkLoaded>
-        <ThemeProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-        </ThemeProvider>
-      </ClerkLoaded>
-    </ClerkProvider>
+    <SafeAreaProvider>
+      <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+        <ClerkLoaded>
+          <ThemeProvider>
+            <Stack screenOptions={{ headerShown: false }} />
+          </ThemeProvider>
+        </ClerkLoaded>
+      </ClerkProvider>
+    </SafeAreaProvider>
   );
 }
