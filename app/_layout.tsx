@@ -53,6 +53,8 @@ if (!publishableKey) {
   // I'll add a warning instead of a hard crash if possible, but ClerkProvider requires it.
 }
 
+import { ThemeProvider } from "../theme/ThemeContext";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -81,7 +83,9 @@ export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
-        <Stack screenOptions={{ headerShown: false }} />
+        <ThemeProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+        </ThemeProvider>
       </ClerkLoaded>
     </ClerkProvider>
   );

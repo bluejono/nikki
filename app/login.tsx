@@ -1,14 +1,17 @@
+import { useTheme } from "@/theme/ThemeContext";
 import { useOAuth } from "@clerk/clerk-expo";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import * as WebBrowser from "expo-web-browser";
 import { useCallback } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
+  const { isDark } = useTheme()
+
   const { startOAuthFlow: startGoogleFlow } = useOAuth({ strategy: "oauth_google" });
   const { startOAuthFlow: startFacebookFlow } = useOAuth({ strategy: "oauth_facebook" });
   const { startOAuthFlow: startDiscordFlow } = useOAuth({ strategy: "oauth_discord" });
@@ -48,6 +51,7 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
+      <StatusBar barStyle={'light-content'} />
       <View className="flex-1 p-6">
         <View className="items-center mt-12">
           <Text className="text-white text-3xl font-bold tracking-[-.2px]">LOGO</Text>
