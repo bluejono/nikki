@@ -5,6 +5,7 @@
     "theme_label": "Theme: {{theme}}",
     "default_font": "Inter Regular (Default)",
     "go_to_login": "Go to Login",
+    "new_note": "New Note",
     "container_text": "This container uses the 'secondary' theme color.",
     "themes": {
       "light": "Light",
@@ -14,10 +15,26 @@
   },
   "login": {
     "welcome": "Welcome back",
-    "sign_in": "Sign In",
+    "sign_in": "Sign in",
     "continue_with_google": "Continue with Google",
     "continue_with_facebook": "Continue with Facebook",
     "continue_with_discord": "Continue with Discord",
     "slogan": "Say goodbye to mental clutter. Start thinking clearly."
+  },
+  "note_editor": {
+    "title_placeholder": "Note title",
+    "content_placeholder": "Write your note...",
+    "save_success": "Saved!",
+    "module_missing": "Native module not found. Please ensure you are not using Expo Go and have rebuilt the app.",
+    "mic_permission_title": "Microphone Permission",
+    "mic_permission_message": "Please allow microphone access to use transcription.",
+    "mic_permission_blocked": "Permission is blocked. Please enable it in the system settings.",
+    "mic_unavailable_title": "Feature Unavailable",
+    "mic_unavailable_message": "Speech recognition is not available on this device."
+  },
+  "common": {
+    "error": "Error",
+    "cancel": "Cancel",
+    "open_settings": "Open Settings"
   }
 }
