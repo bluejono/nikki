@@ -1,8 +1,10 @@
-import { useTheme } from "@/theme/ThemeContext";
+import Header from "@/components/Header";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from "../theme/ThemeContext";
 
 export default function Index() {
   const { theme, setTheme, isDark, colorScheme } = useTheme();
@@ -27,80 +29,69 @@ export default function Index() {
   };
 
   return (
-    <View
+    <SafeAreaView
       style={{ flex: 1 }}
-      className={`${colorScheme === "dark" ? "dark" : ""} bg-background items-center justify-center gap-8`}
+      className={`${colorScheme === "dark" ? "dark" : ""} bg-background items-center gap-8`}
     >
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+      <Header />
+      <View className="flex-1 justify-center items-center">
+        <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+        <View className="absolute top-12 right-6 flex-row gap-4">
+          <TouchableOpacity
+            onPress={toggleLanguage}
+            className="p-3 rounded-full bg-secondary"
+          >
+            <Text className="text-secondary-foreground font-bold">
+              {i18n.language.toUpperCase()}
+            </Text>
+          </TouchableOpacity>
 
-      {/* Top Controls */}
-      <View className="absolute top-12 right-6 flex-row gap-4">
-        <TouchableOpacity
-          onPress={toggleLanguage}
-          className="p-3 rounded-full bg-secondary shadow-sm"
-          activeOpacity={0.7}
-        >
-          <Text className="text-secondary-foreground font-bold text-xs">
-            {i18n.language.toUpperCase()}
+          <TouchableOpacity
+            onPress={toggleTheme}
+            className="p-3 rounded-full bg-secondary"
+          >
+            <Ionicons
+              name={getThemeIcon()}
+              size={24}
+              color={isDark ? "white" : "black"}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <Text className="text-primary text-center text-4xl font-black mb-2">
+            {t("home.title")}
           </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={toggleTheme}
-          className="p-3 rounded-full bg-secondary shadow-sm"
-          activeOpacity={0.7}
-        >
-          <Ionicons name={getThemeIcon()} size={20} color={isDark ? "white" : "black"} />
-        </TouchableOpacity>
-      </View>
-
-      <View className="items-center">
-        <Text className="text-primary text-center text-5xl font-black mb-2 tracking-tighter">
-          {t("home.title")}
-        </Text>
-        <Text className="text-foreground text-center text-2xl font-bold">
-          {t("home.subtitle")}
-        </Text>
-        <View className="mt-4 bg-secondary px-4 py-1 rounded-full">
-          <Text className="text-secondary-foreground text-center text-sm font-medium">
+          <Text className="text-foreground text-center text-3xl font-bold">
+            {t("home.subtitle")}
+          </Text>
+          <Text className="text-muted-foreground text-center text-xl font-semibold">
             {t("home.theme_label", {
-              theme: t(`home.themes.${theme}`)
+              theme: t(`home.themes.${theme}`),
             })}
           </Text>
-        </View>
-        <Text className="text-muted-foreground text-center text-sm italic mt-6 opacity-60">
-          {t("home.default_font")}
-        </Text>
-      </View>
-
-      <View className="gap-4 w-full px-10">
-        <TouchableOpacity
-          className="bg-primary py-4 rounded-2xl shadow-xl border border-border items-center"
-          onPress={() => router.push("/login")}
-        >
-          <Text className="text-primary-foreground font-bold text-lg">
-            {t("home.go_to_login")}
+          <Text className="text-muted-foreground text-center text-lg italic mt-4">
+            {t("home.default_font")}
           </Text>
-        </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity
-          className="bg-secondary py-4 rounded-2xl shadow-xl border border-border/20 items-center"
-          onPress={() => router.push("/new-note")}
-        >
-          <View className="flex-row items-center gap-2">
-            <Ionicons name="add-circle-outline" size={24} color={isDark ? "white" : "black"} />
-            <Text className="text-secondary-foreground font-bold text-lg">
-              {t("home.new_note")}
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <View className="flex-row gap-4">
+          <Link href="/login" asChild>
+            <TouchableOpacity className="bg-primary px-8 py-4 rounded-xl shadow-lg border border-border">
+              <Text className="text-primary-foreground font-bold text-lg">
+                {t("home.go_to_login")}
+              </Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+
+        <View className="p-6 bg-secondary rounded-2xl w-5/6">
+          <Text className="text-secondary-foreground font-semibold text-center">
+            {t("home.container_text")}
+          </Text>
+        </View>
       </View>
 
-      <View className="p-6 bg-secondary/50 rounded-3xl w-5/6 mt-8 border border-border/20">
-        <Text className="text-secondary-foreground font-medium text-center leading-relaxed">
-          {t("home.container_text")}
-        </Text>
-      </View>
-    </View>
+    </SafeAreaView >
   );
 }
