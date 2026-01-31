@@ -36,5 +36,10 @@
     "error": "Erro",
     "cancel": "Cancelar",
     "open_settings": "Abrir Configurações"
+  },
+  "settings": {
+    "logout": "Sair",
+    "logout_confirm_title": "Desconectar",
+    "logout_confirm_message": "Tem certeza que deseja sair da sua conta?"
   }
 }

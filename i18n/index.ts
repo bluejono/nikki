@@ -5,6 +5,8 @@ import { initReactI18next } from "react-i18next";
 import en from "./locales/en.json";
 import pt from "./locales/pt.json";
 
+export type Language = "pt" | "en";
+
 const resources = {
   en: { translation: en },
   pt: { translation: pt },

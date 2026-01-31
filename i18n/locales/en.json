@@ -36,5 +36,10 @@
     "error": "Error",
     "cancel": "Cancel",
     "open_settings": "Open Settings"
+  },
+  "settings": {
+    "logout": "Logout",
+    "logout_confirm_title": "Sign Out",
+    "logout_confirm_message": "Are you sure you want to sign out?"
   }
 }

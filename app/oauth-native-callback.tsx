@@ -1,5 +1,5 @@
 import LoadingScreen from "@/components/LoadingScreen";
 
-export default function RootIndex() {
+export default function OAuthNativeCallback() {
   return <LoadingScreen />;
 }

@@ -2,6 +2,7 @@ import { useTheme } from "@/theme/ThemeContext";
 import { useOAuth } from "@clerk/clerk-expo";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
@@ -20,7 +21,9 @@ export default function LoginScreen() {
 
   const onGooglePress = useCallback(async () => {
     try {
-      const { createdSessionId, setActive } = await startGoogleFlow();
+      const { createdSessionId, setActive } = await startGoogleFlow({
+        redirectUrl: Linking.createURL("/oauth-native-callback", { scheme: "nikki" }),
+      });
       if (createdSessionId && setActive) {
         setActive({ session: createdSessionId });
       }
@@ -31,7 +34,9 @@ export default function LoginScreen() {
 
   const onFacebookPress = useCallback(async () => {
     try {
-      const { createdSessionId, setActive } = await startFacebookFlow();
+      const { createdSessionId, setActive } = await startFacebookFlow({
+        redirectUrl: Linking.createURL("/oauth-native-callback", { scheme: "nikki" }),
+      });
       if (createdSessionId && setActive) {
         setActive({ session: createdSessionId });
       }
@@ -42,7 +47,9 @@ export default function LoginScreen() {
 
   const onDiscordPress = useCallback(async () => {
     try {
-      const { createdSessionId, setActive } = await startDiscordFlow();
+      const { createdSessionId, setActive } = await startDiscordFlow({
+        redirectUrl: Linking.createURL("/oauth-native-callback", { scheme: "nikki" }),
+      });
       if (createdSessionId && setActive) {
         setActive({ session: createdSessionId });
       }
