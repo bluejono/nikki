@@ -5,6 +5,7 @@
     "theme_label": "Tema: {{theme}}",
     "default_font": "Inter Regular (Padrão)",
     "go_to_login": "Ir para Login",
+    "new_note": "Nova Nota",
     "container_text": "Este card usa a cor 'secondary' do tema.",
     "themes": {
       "light": "Claro",
@@ -19,5 +20,26 @@
     "continue_with_facebook": "Continuar com Facebook",
     "continue_with_discord": "Continuar com Discord",
     "slogan": "Diga adeus à bagunça mental. Comece a pensar com clareza."
+  },
+  "note_editor": {
+    "title_placeholder": "Título da nota",
+    "content_placeholder": "Escreva sua nota...",
+    "save_success": "Salvo!",
+    "module_missing": "Módulo nativo não encontrado. Certifique-se de que não está usando o Expo Go e que recompilou o app.",
+    "mic_permission_title": "Permissão do Microfone",
+    "mic_permission_message": "Por favor, permita o acesso ao microfone para usar a transcrição.",
+    "mic_permission_blocked": "A permissão está bloqueada. Por favor, ative-a nas configurações do sistema.",
+    "mic_unavailable_title": "Recurso Indisponível",
+    "mic_unavailable_message": "O reconhecimento de voz não está disponível neste dispositivo."
+  },
+  "common": {
+    "error": "Erro",
+    "cancel": "Cancelar",
+    "open_settings": "Abrir Configurações"
+  },
+  "settings": {
+    "logout": "Sair",
+    "logout_confirm_title": "Desconectar",
+    "logout_confirm_message": "Tem certeza que deseja sair da sua conta?"
   }
 }
