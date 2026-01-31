@@ -69,14 +69,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider>
-      <SafeAreaProvider>
-        <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+    <SafeAreaProvider>
+      <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+        <ThemeProvider>
           <ClerkLoaded>
             <Stack screenOptions={{ headerShown: false }} />
           </ClerkLoaded>
-        </ClerkProvider>
-      </SafeAreaProvider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </ClerkProvider>
+    </SafeAreaProvider>
   );
 }

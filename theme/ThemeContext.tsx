@@ -1,6 +1,6 @@
 import { useColorScheme } from "nativewind";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useColorScheme as useDeviceColorScheme } from "react-native";
+import { View } from "react-native";
 
 type Theme = "light" | "dark" | "system";
 
@@ -15,7 +15,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const { colorScheme, setColorScheme } = useColorScheme();
-  const deviceColorScheme = useDeviceColorScheme();
   const [theme, setThemeState] = useState<Theme>("system");
 
   useEffect(() => {
@@ -39,7 +38,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         colorScheme,
       }}
     >
-      {children}
+      <View style={{ flex: 1 }} className={colorScheme === "dark" ? "dark" : ""}>
+        {children}
+      </View>
     </ThemeContext.Provider>
   );
 }
