@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 WebBrowser.maybeCompleteAuthSession();
@@ -59,43 +59,50 @@ export default function LoginScreen() {
   }, [startXFlow]);
 
   return (
-    <SafeAreaView className="flex-1 bg-black">
-      <StatusBar barStyle={'light-content'} />
-      <View className="flex-1 p-6">
-        <View className="items-center mt-4">
-          <Text className="text-white text-3xl font-bold tracking-[-.2px]">LOGO</Text>
-        </View>
+    <View style={{ flex: 1, backgroundColor: '#000000' }}>
+      <LinearGradient
+        colors={['rgba(255, 255, 255, 0.18)', 'rgba(230, 168, 53, 0.15)', '#000000', '#000000']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0.6, y: 0.6 }}
+        style={StyleSheet.absoluteFill}
+      />
 
-        <View className="flex-1 relative justify-center items-center">
-          <Image
-            source={require('../assets/images/login/bg.png')}
-            className="w-full h-full"
-            resizeMode="contain"
-          />
-          <LinearGradient
-            colors={['transparent', 'rgba(7,16,17,0.8)', '#071011']}
-            className="absolute bottom-0 left-0 right-0 h-40"
-          />
-        </View>
-
-        <View className="mt-auto mb-10">
-          <View className="gap-3">
-            <SocialLoginButton icon="google" text={t("login.continue_with_google")} onPress={onGooglePress} />
-            <SocialLoginButton icon="facebook" text={t("login.continue_with_facebook")} onPress={onFacebookPress} />
-            <SocialLoginButton icon="x-twitter" text={t("login.continue_with_x")} onPress={onXPress} />
+      <SafeAreaView className="flex-1">
+        <StatusBar barStyle={'light-content'} />
+        <View className="flex-1 p-6">
+          <View className="items-center mt-4">
+            <Text className="text-white text-3xl font-bold tracking-[-.2px]">LOGO</Text>
           </View>
 
-          <View className="h-[0.5px] bg-cadet-gray my-8" />
+          <View className="flex-1 relative justify-center items-center">
+            <Image
+              source={require('../assets/images/login/bg.png')}
+              className="w-full h-full"
+              resizeMode="contain"
+            />
+          </View>
 
-          <Text className="font-serif text-cadet-gray text-md text-center leading-relaxed px-8">
-            {t("login.slogan")}
-          </Text>
+          <View className="mt-auto mb-10">
+            <View className="gap-3">
+              <SocialLoginButton icon="google" text={t("login.continue_with_google")} onPress={onGooglePress} />
+              <SocialLoginButton icon="facebook" text={t("login.continue_with_facebook")} onPress={onFacebookPress} />
+              <SocialLoginButton icon="x-twitter" text={t("login.continue_with_x")} onPress={onXPress} />
+            </View>
 
+            <View className="h-[0.5px] bg-cadet-gray my-8" />
+
+            <Text className="font-serif text-cadet-gray text-md text-center leading-relaxed px-8">
+              {t("login.slogan")}
+            </Text>
+
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({});
 
 const SocialLoginButton = ({ icon, customIcon, text, onPress }: { icon?: any, customIcon?: React.ReactNode, text: string, onPress: () => void }) => {
   return (

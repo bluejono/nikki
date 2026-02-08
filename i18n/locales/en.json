@@ -5,7 +5,23 @@
     "default_font": "Inter Regular (Default)",
     "go_to_login": "Go to Login",
     "new_note": "New Note",
-    "container_text": "This container uses the 'secondary' theme color."
+    "see_onboarding": "See Onboarding",
+    "hero_greeting_morning": "Good Morning ☀️",
+    "hero_greeting_afternoon": "Good Afternoon 🌤️",
+    "hero_greeting_evening": "Good Evening 🌙",
+    "hero_question": "What's on your mind today?",
+    "quick_note": "Quick Note",
+    "latest_reflection": "LATEST REFLECTION",
+    "latest_reflection_title": "Morning walks and the feeling of crisp air",
+    "latest_reflection_preview": "Today I decided to take a longer route through the park. The colors of autumn are finally starting to show...",
+    "min_read": "4 min read",
+    "weekend_snapshots": "Weekend getaway snapshots",
+    "mood_inspired": "Mood: Inspired",
+    "voice_memo": "Voice Memo",
+    "writing_streak": "Writing Streak",
+    "writing_streak_days": "Days",
+    "note_to_self_quote": "\"Done is better than perfect.\"",
+    "note_to_self_label": "Note to self"
   },
 
   "login": {
@@ -36,5 +52,29 @@
     "logout": "Logout",
     "logout_confirm_title": "Sign Out",
     "logout_confirm_message": "Are you sure you want to sign out?"
+  },
+  "onboarding": {
+    "step1": {
+      "title": "Say goodbye to",
+      "accent": "mental clutter",
+      "description": "Embrace the clarity of a quiet mind. Your journey to stillness begins with a single thought."
+    },
+    "step2": {
+      "title": "Stay organized",
+      "accent": "anywhere",
+      "description": "Your ideas, synced across all your devices. Never lose a moment of inspiration."
+    },
+    "step3": {
+      "title": "Your privacy",
+      "accent": "our priority",
+      "description": "Encrypted notes and secure access. Your thoughts remain yours and yours alone."
+    },
+    "next": "Next"
+  },
+  "follow_us": {
+    "title": "Follow Us",
+    "greeting": "Hey there! This is",
+    "minds_behind": "We're the minds behind Nikki. We hope you're enjoying the experience!",
+    "call_to_action": "Feel free to follow us for the latest updates!"
   }
 }

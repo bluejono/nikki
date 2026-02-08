@@ -2,6 +2,7 @@ import { useTheme } from "@/theme/ThemeContext";
 import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
 import { Drawer } from "expo-router/drawer";
 import { useTranslation } from "react-i18next";
 import { Alert, View } from "react-native";
@@ -10,6 +11,7 @@ function CustomDrawerContent(props: any) {
   const { signOut } = useAuth();
   const { colors, isDark } = useTheme();
   const { t } = useTranslation();
+  const router = useRouter();
 
   const handleSignOut = () => {
     Alert.alert(
@@ -28,8 +30,28 @@ function CustomDrawerContent(props: any) {
 
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
-      <View className="flex-1">
+      <View className="flex-1 mt-4">
         <DrawerItemList {...props} />
+
+        <View className="px-2 mt-2">
+          <DrawerItem
+            label="Follow Us"
+            labelStyle={{ color: colors.foreground, fontSize: 16, fontWeight: "500" }}
+            icon={({ size, color }) => (
+              <Ionicons name="people-outline" size={size} color={colors.foreground} />
+            )}
+            onPress={() => props.navigation.navigate("follow-us")}
+          />
+
+          <DrawerItem
+            label="See Onboarding"
+            labelStyle={{ color: colors.foreground, fontSize: 16, fontWeight: "500" }}
+            icon={({ size, color }) => (
+              <Ionicons name="information-circle-outline" size={size} color={colors.foreground} />
+            )}
+            onPress={() => router.push("/onboarding")}
+          />
+        </View>
       </View>
 
       <View className="p-4 border-t border-border/10 mb-8">
@@ -51,10 +73,9 @@ function CustomDrawerContent(props: any) {
 }
 
 export default function DrawerLayout() {
-  const { colorScheme, colors } = useTheme();
-
-  const iconColor = colors.foreground;
-  const activeBackgroundColor = colorScheme === "dark" ? "#27272A" : "#F4F4F5";
+  const { colors } = useTheme();
+  const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <Drawer
@@ -62,62 +83,33 @@ export default function DrawerLayout() {
       screenOptions={{
         drawerPosition: 'right',
         headerShown: false,
-        drawerActiveTintColor: colors.foreground,
-        drawerInactiveTintColor: colorScheme === "dark" ? "#A1A1AA" : "#71717A",
-        drawerActiveBackgroundColor: activeBackgroundColor,
         drawerStyle: {
           backgroundColor: colors.background,
-          borderLeftWidth: 1,
-          borderLeftColor: '#f5f5f5',
-          borderTopLeftRadius: 20,
-          borderBottomLeftRadius: 20,
-        },
-        drawerLabelStyle: {
-          fontSize: 16,
-          fontWeight: "600",
         },
       }}
     >
       <Drawer.Screen
-        name="index"
+        name="(tabs)"
         options={{
-          drawerLabel: "Home",
+          drawerLabel: t("navigation.home", "Home"),
           title: "Home",
-          headerShown: false,
-          drawerIcon: ({ size }) => (
-            <Ionicons name="home-outline" size={size} color={iconColor} />
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
           ),
         }}
       />
       <Drawer.Screen
-        name="new-note"
+        name="follow-us"
         options={{
-          drawerLabel: "New Note",
-          title: "New Note",
-          headerShown: false,
-          drawerIcon: ({ size }) => (
-            <Ionicons name="add-circle-outline" size={size} color={iconColor} />
-          ),
+          drawerItemStyle: { display: 'none' },
+          title: "Follow Us",
         }}
       />
       <Drawer.Screen
-        name="favorites"
+        name="onboarding-link"
         options={{
-          drawerLabel: "Favorites",
-          title: "Favorites",
-          drawerIcon: ({ size }) => (
-            <Ionicons name="star-outline" size={size} color={iconColor} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="settings"
-        options={{
-          drawerLabel: "Settings",
-          title: "Settings",
-          drawerIcon: ({ size }) => (
-            <Ionicons name="settings-outline" size={size} color={iconColor} />
-          ),
+          drawerItemStyle: { display: 'none' },
+          title: "Onboarding",
         }}
       />
     </Drawer>

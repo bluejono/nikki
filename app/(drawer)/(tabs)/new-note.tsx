@@ -70,7 +70,6 @@ export default function NewNote() {
   return (
     <SafeAreaView className="bg-background flex-1" edges={["top"]}>
       <KeyboardAvoidingView behavior={isIos ? "padding" : "height"} className="flex-1">
-        {/* Top Bar */}
         <View className="flex-row justify-between items-center p-6 pb-0">
           <TouchableOpacity
             onPress={handleBack}
@@ -102,7 +101,6 @@ export default function NewNote() {
         </View>
 
         <ScrollView className="flex-1 px-6" showsVerticalScrollIndicator={false}>
-          {/* Note Header */}
           <View className="mt-4">
             <TextInput
               className="text-foreground text-3xl font-bold leading-tight tracking-[-0.8px]"
@@ -142,7 +140,6 @@ export default function NewNote() {
             )}
           </View>
 
-          {/* Note Content Section */}
           <View className="mt-2 pb-32">
             <TextInput
               ref={contentInputRef}
