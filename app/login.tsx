@@ -1,5 +1,5 @@
 import { useOAuth } from "@clerk/clerk-expo";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Linking from "expo-linking";
 import { useRouter } from "expo-router";
@@ -17,7 +17,7 @@ export default function LoginScreen() {
 
   const { startOAuthFlow: startGoogleFlow } = useOAuth({ strategy: "oauth_google" });
   const { startOAuthFlow: startFacebookFlow } = useOAuth({ strategy: "oauth_facebook" });
-  const { startOAuthFlow: startDiscordFlow } = useOAuth({ strategy: "oauth_discord" });
+  const { startOAuthFlow: startXFlow } = useOAuth({ strategy: "oauth_x" });
 
   const onGooglePress = useCallback(async () => {
     try {
@@ -45,9 +45,9 @@ export default function LoginScreen() {
     }
   }, [startFacebookFlow]);
 
-  const onDiscordPress = useCallback(async () => {
+  const onXPress = useCallback(async () => {
     try {
-      const { createdSessionId, setActive } = await startDiscordFlow({
+      const { createdSessionId, setActive } = await startXFlow({
         redirectUrl: Linking.createURL("/oauth-native-callback", { scheme: "nikki" }),
       });
       if (createdSessionId && setActive) {
@@ -56,7 +56,7 @@ export default function LoginScreen() {
     } catch (err) {
       console.error("OAuth error", err);
     }
-  }, [startDiscordFlow]);
+  }, [startXFlow]);
 
   return (
     <SafeAreaView className="flex-1 bg-black">
@@ -82,7 +82,7 @@ export default function LoginScreen() {
           <View className="gap-3">
             <SocialLoginButton icon="google" text={t("login.continue_with_google")} onPress={onGooglePress} />
             <SocialLoginButton icon="facebook" text={t("login.continue_with_facebook")} onPress={onFacebookPress} />
-            <SocialLoginButton text={t("login.continue_with_discord")} onPress={onDiscordPress} customIcon={<MaterialIcons name="discord" size={24} color="#071011" />} />
+            <SocialLoginButton icon="x-twitter" text={t("login.continue_with_x")} onPress={onXPress} />
           </View>
 
           <View className="h-[0.5px] bg-cadet-gray my-8" />
@@ -104,7 +104,7 @@ const SocialLoginButton = ({ icon, customIcon, text, onPress }: { icon?: any, cu
       activeOpacity={0.7}
       onPress={onPress}
     >
-      {customIcon ? customIcon : <FontAwesome name={icon} size={20} color="#071011" />}
+      {customIcon ? customIcon : (icon === "x-twitter" ? <FontAwesome6 name={icon} size={20} color="#071011" /> : <FontAwesome name={icon} size={20} color="#071011" />)}
       <Text className="text-richBlack text-lg font-semibold ml-3 tracking-[-0.2px]">{text}</Text>
     </TouchableOpacity>
   );
