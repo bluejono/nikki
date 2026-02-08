@@ -5,7 +5,23 @@
     "default_font": "Inter Regular (Padrão)",
     "go_to_login": "Ir para Login",
     "new_note": "Nova Nota",
-    "container_text": "Este card usa a cor 'secondary' do tema."
+    "see_onboarding": "Ver Onboarding",
+    "hero_greeting_morning": "Bom Dia ☀️",
+    "hero_greeting_afternoon": "Boa Tarde 🌤️",
+    "hero_greeting_evening": "Boa Noite 🌙",
+    "hero_question": "O que está na sua mente hoje?",
+    "quick_note": "Nota Rápida",
+    "latest_reflection": "ÚLTIMA REFLEXÃO",
+    "latest_reflection_title": "Caminhadas matinais e a brisa fresca",
+    "latest_reflection_preview": "Hoje decidi fazer um caminho mais longo pelo parque. As cores do outono finalmente começaram a aparecer...",
+    "min_read": "4 min de leitura",
+    "weekend_snapshots": "Fotos do final de semana",
+    "mood_inspired": "Humor: Inspirado",
+    "voice_memo": "Nota de Voz",
+    "writing_streak": "Série de Escrita",
+    "writing_streak_days": "Dias",
+    "note_to_self_quote": "\"Feito é melhor que perfeito.\"",
+    "note_to_self_label": "Lembrete pessoal"
   },
 
   "login": {
@@ -36,5 +52,29 @@
     "logout": "Sair",
     "logout_confirm_title": "Desconectar",
     "logout_confirm_message": "Tem certeza que deseja sair da sua conta?"
+  },
+  "onboarding": {
+    "step1": {
+      "title": "Diga adeus à",
+      "accent": "bagunça mental",
+      "description": "Abrace a clareza de uma mente tranquila. Sua jornada para a quietude começa com um único pensamento."
+    },
+    "step2": {
+      "title": "Mantenha-se organizado",
+      "accent": "em qualquer lugar",
+      "description": "Suas ideias, sincronizadas em todos os seus dispositivos. Nunca perca um momento de inspiração."
+    },
+    "step3": {
+      "title": "Sua privacidade",
+      "accent": "nossa prioridade",
+      "description": "Notas criptografadas e acesso seguro. Seus pensamentos continuam sendo seus, e apenas seus."
+    },
+    "next": "Próximo"
+  },
+  "follow_us": {
+    "title": "Siga-nos",
+    "greeting": "Olá! Aqui é",
+    "minds_behind": "Somos as mentes por trás do Nikki. Esperamos que esteja gostando da experiência!",
+    "call_to_action": "Sinta-se à vontade para nos seguir para as últimas atualizações!"
   }
 }

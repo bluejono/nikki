@@ -1,5 +1,8 @@
 import { ClerkLoaded, ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import {
+  Inter_100Thin,
+  Inter_200ExtraLight,
+  Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
   Inter_600SemiBold,
@@ -59,8 +62,8 @@ function InitialLayout() {
     const isCallbackPage = segments[0] === "oauth-native-callback";
 
     if (isSignedIn && !inAuthGroup) {
-      router.replace("/(drawer)");
-    } else if (!isSignedIn && segments[0] !== "login" && !isCallbackPage) {
+      router.replace("/(drawer)/(tabs)");
+    } else if (!isSignedIn && segments[0] !== "login" && segments[0] !== "onboarding" && !isCallbackPage) {
       router.replace("/login");
     }
   }, [isSignedIn, isLoaded]);
@@ -78,6 +81,7 @@ function InitialLayout() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       <Stack.Screen name="oauth-native-callback" options={{ headerShown: false }} />
     </Stack>
   );
@@ -85,6 +89,9 @@ function InitialLayout() {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
+    Inter_100Thin,
+    Inter_200ExtraLight,
+    Inter_300Light,
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,

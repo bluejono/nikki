@@ -42,6 +42,9 @@ module.exports = {
   plugins: [
     ({ addUtilities }) => {
       addUtilities({
+        ".font-thin": { fontFamily: "Inter_100Thin" },
+        ".font-extralight": { fontFamily: "Inter_200ExtraLight" },
+        ".font-light": { fontFamily: "Inter_300Light" },
         ".font-regular": { fontFamily: "Inter_400Regular" },
         ".font-medium": { fontFamily: "Inter_500Medium" },
         ".font-semibold": { fontFamily: "Inter_600SemiBold" },
