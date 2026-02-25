@@ -1,11 +1,8 @@
 import Header from "@/components/Header";
-import HomeHero from "@/components/HomeHero";
-import { Link } from "expo-router";
+import NoteCard from "@/components/NoteCard";
 import { useTranslation } from "react-i18next";
 import {
   ScrollView,
-  Text,
-  TouchableOpacity,
   View
 } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -29,16 +26,16 @@ export default function Index() {
     <SafeAreaView
       style={{ flex: 1 }}
       className="bg-background"
-      edges={['top']}
+      edges={['top', 'bottom']}
     >
       <Header />
 
       <ScrollView
         className="flex-1 px-6 mt-2"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 100 }}
+        contentContainerStyle={{ paddingBottom: 160 }}
       >
-        <View className="mb-2 flex-row justify-between items-center">
+        {/* <View className="mb-2 flex-row justify-between items-center">
           <View className="flex-row items-center gap-3">
             <Text className="text-xs font-bold uppercase tracking-widest text-[#91A0AA]">
               {formattedDate}
@@ -68,9 +65,18 @@ export default function Index() {
               </TouchableOpacity>
             </Link>
           </View>
-        </View>
+        </View> */}
 
-        <HomeHero />
+        <View className="gap-4">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <NoteCard
+              key={index}
+              title={`Nota Mockada #${index + 1}`}
+              description={`Esta é a descrição da nota número ${index + 1}. Aqui podemos ver como o texto se comporta com o limite de linhas definido no componente NoteCard.`}
+              createdAt={`${25 - (index % 28)} Fev`}
+            />
+          ))}
+        </View>
       </ScrollView>
     </SafeAreaView >
   );
